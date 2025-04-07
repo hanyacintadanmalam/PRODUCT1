@@ -1,0 +1,114 @@
+:root {
+  --win95-blue: #000080;
+  --win95-blue-light: #1084d0;
+  --win95-gray: #c0c0c0;
+  --win95-teal: #008080;
+  --win95-text: #000000;
+  --win95-border-light: #ffffff;
+  --win95-border-dark: #808080;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html, body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  font-family: 'MS Sans Serif', 'Segoe UI', 'Tahoma', sans-serif;
+  color: var(--win95-text);
+  background-color: var(--win95-teal);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  background-color: var(--win95-gray);
+  border: 2px outset var(--win95-border-light);
+  padding: 0.25rem 0.5rem;
+  color: var(--win95-text);
+  font-family: inherit;
+  font-size: 12px;
+}
+
+button:active {
+  border: 2px inset var(--win95-border-light);
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.25rem;
+  border: 2px inset var(--win95-border-light);
+  background-color: white;
+  font-family: inherit;
+}
+
+/* Windows 95 Scrollbar */
+::-webkit-scrollbar {
+  width: 16px;
+  height: 16px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--win95-gray);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--win95-gray);
+  border: 2px outset var(--win95-border-light);
+}
+
+::-webkit-scrollbar-button {
+  background-color: var(--win95-gray);
+  border: 2px outset var(--win95-border-light);
+  display: block;
+  height: 16px;
+  width: 16px;
+}
+
+/* Windows 95 Font */
+@font-face {
+  font-family: 'MS Sans Serif';
+  src: url('https://unpkg.com/98.css@0.1.17/dist/ms_sans_serif.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'MS Sans Serif';
+  src: url('https://unpkg.com/98.css@0.1.17/dist/ms_sans_serif_bold.woff2') format('woff2');
+  font-weight: bold;
+  font-style: normal;
+}
+
+/* Party Mode Global Class */
+:global(.party-mode) .desktop {
+  animation: partyBackground 5s infinite;
+}
+
+@keyframes partyBackground {
+  0% { background-color: #008080; }
+  20% { background-color: #800080; }
+  40% { background-color: #800000; }
+  60% { background-color: #008000; }
+  80% { background-color: #000080; }
+  100% { background-color: #008080; }
+}
+
+/* Fix untuk tampilan di beberapa browser mobile */
+@media (max-width: 480px) {
+  button, input, select {
+    font-size: 16px; /* Mencegah zoom otomatis di iOS */
+  }
+  
+  body {
+    -webkit-text-size-adjust: 100%; /* Mencegah perubahan ukuran font otomatis */
+  }
+} 
