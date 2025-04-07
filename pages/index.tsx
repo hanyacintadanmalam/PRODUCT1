@@ -520,7 +520,7 @@ export default function Home() {
       <Head>
         <title>{`Selamat Ulang Tahun ${recipientName}!`}</title>
         <meta name="description" content={`Kartu ucapan retro 90an untuk ${recipientName}`} />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       
@@ -848,36 +848,38 @@ export default function Home() {
                       <div className={styles.trackArtist}>Classic Hits</div>
                     </div>
                     
-                    <div className={styles.playerControls}>
-                      <button 
-                        className={styles.playerButton} 
+                    <div className={styles.playerWrapper}>
+                      <div className={styles.playerControls}>
+                        <button 
+                          className={styles.playerButton} 
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            togglePlay();
+                          }}
+                        >
+                          {isPlaying ? '⏸️' : '▶️'}
+                        </button>
+                      </div>
+                      
+                      <div className={styles.timeInfo}>
+                        <span>{formatAudioTime(currentTime2)}</span>
+                        <span>{formatAudioTime(duration)}</span>
+                      </div>
+                      
+                      <div 
+                        className={styles.progressBar}
                         onClick={(e) => {
                           e.stopPropagation();
-                          togglePlay();
+                          handleProgressClick(e);
                         }}
                       >
-                        {isPlaying ? '⏸️' : '▶️'}
-                      </button>
-                    </div>
-                    
-                    <div className={styles.timeInfo}>
-                      <span>{formatAudioTime(currentTime2)}</span>
-                      <span>{formatAudioTime(duration)}</span>
-                    </div>
-                    
-                    <div 
-                      className={styles.progressBar}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleProgressClick(e);
-                      }}
-                    >
-                      <div 
-                        className={styles.progress} 
-                        style={{ 
-                          width: duration > 0 ? `${(currentTime2 / duration) * 100}%` : '0%'
-                        }}
-                      ></div>
+                        <div 
+                          className={styles.progress} 
+                          style={{ 
+                            width: duration > 0 ? `${(currentTime2 / duration) * 100}%` : '0%'
+                          }}
+                        ></div>
+                      </div>
                     </div>
                     
                     <div className={styles.volumeControl}>
@@ -903,7 +905,7 @@ export default function Home() {
                     top: `${windowPosition.photo.y}px`,
                     left: `${windowPosition.photo.x}px`,
                     width: "480px",
-                    height: "400px"
+                    height: "auto"
                   }}
                   onClick={() => setActiveWindow('photo')}
                 >
@@ -939,7 +941,7 @@ export default function Home() {
                   
                   <div className={styles.photoContent}>
                     <div className={styles.photo}>
-                      <div className={styles.gallerySlideshow}>
+                      <div className={styles.gallerySlideshow} style={{ paddingTop: '25px' }}>
                         <div className={styles.slideCounter}>{currentSlide + 1}/{galleryItems.length}</div>
                         {isVideo ? (
                           <div 
@@ -984,7 +986,7 @@ export default function Home() {
                             </div>
                           </div>
                         ) : (
-                          <div className={styles.polaroid} key={`polaroid-${currentSlide}`} style={{ marginTop: '-40px' }}>
+                          <div className={styles.polaroid} key={`polaroid-${currentSlide}`}>
                             <div 
                               className={styles.slideImage}
                               style={{

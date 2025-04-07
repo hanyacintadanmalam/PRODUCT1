@@ -21,6 +21,8 @@
   animation: heartbeat 1s infinite, rainbow 3s infinite;
   margin-top: 2rem;
   position: relative;
+  text-align: center;
+  padding: 0 20px;
 }
 
 .loveMessage::before,
@@ -85,4 +87,72 @@
   50% { width: 60%; }
   75% { width: 75%; }
   100% { width: 100%; }
+}
+
+/* Media queries untuk tampilan mobile */
+@media (max-width: 480px) {
+  .loveMessage {
+    font-size: 40px;
+    margin-top: 1.5rem;
+  }
+  
+  .loveMessage::before,
+  .loveMessage::after {
+    font-size: 30px;
+  }
+  
+  .loveMessage::before {
+    left: -40px;
+  }
+  
+  .loveMessage::after {
+    right: -40px;
+  }
+  
+  .progressBar {
+    width: 250px;
+    height: 15px;
+  }
+}
+
+/* Spesifik untuk iPhone */
+@media (max-width: 390px) and (max-height: 844px) {
+  .loveMessage {
+    font-size: 32px;
+    margin-top: 1rem;
+  }
+  
+  .loveMessage::before,
+  .loveMessage::after {
+    font-size: 24px;
+  }
+  
+  .loveMessage::before {
+    left: -30px;
+  }
+  
+  .loveMessage::after {
+    right: -30px;
+  }
+  
+  .progressBar {
+    width: 200px;
+    height: 12px;
+  }
+}
+
+/* Haddle device dengan layar sangat kecil */
+@media (max-width: 320px) {
+  .loveMessage {
+    font-size: 28px;
+  }
+  
+  .loveMessage::before,
+  .loveMessage::after {
+    display: none; /* Sembunyikan icon hati di samping text */
+  }
+  
+  .progressBar {
+    width: 180px;
+  }
 } 
