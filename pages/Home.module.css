@@ -87,6 +87,7 @@
   flex-grow: 1;
   position: relative;
   padding: 10px;
+  padding-left: 5px;
   background-color: #000033;
   background-image: linear-gradient(45deg, #000028 0%, #000050 100%);
   overflow: auto;
@@ -119,7 +120,7 @@
   align-items: flex-start;
   gap: 15px;
   padding-top: 10px;
-  padding-left: 20px;
+  padding-left: 10px;
   width: auto;
   position: relative;
 }
@@ -442,6 +443,7 @@
   align-items: center;
   padding: 0 2px;
   z-index: 100;
+  justify-content: space-between; /* Untuk memastikan jam di ujung kanan */
 }
 
 .startButton {
@@ -494,17 +496,22 @@
   padding: 2px 10px;
   height: 26px;
   font-size: 10px;
+  min-width: 90px;
+  margin-left: auto; /* Mendorong jam ke kanan */
 }
 
 .digitalClock {
   font-family: 'VT323', 'Courier New', monospace;
   color: #000000;
+  font-size: 12px;
+  line-height: 1.1; /* Memperbaiki line height untuk jam */
 }
 
 .digitalDate {
   font-family: 'VT323', 'Courier New', monospace;
-  font-size: 8px;
+  font-size: 10px;
   color: #000000;
+  line-height: 1.1; /* Memperbaiki line height untuk tanggal */
 }
 
 /* Loading Screen */
@@ -647,10 +654,11 @@
   .taskbarTime {
     height: 28px;
     padding: 2px 8px;
+    min-width: 80px;
   }
   
   .digitalClock {
-    font-size: 12px;
+    font-size: 13px;
     font-weight: bold;
   }
   
@@ -967,10 +975,11 @@
   .taskbarTime {
     height: 30px;
     padding: 2px 8px;
+    min-width: 75px;
   }
   
   .digitalClock {
-    font-size: 12px;
+    font-size: 13px;
   }
   
   .digitalDate {
@@ -1077,7 +1086,7 @@
     flex-wrap: nowrap;
     gap: 10px;
     padding: 8px;
-    padding-left: 15px;
+    padding-left: 10px;
     justify-content: flex-start;
     align-items: flex-start;
   }
@@ -1109,6 +1118,7 @@
   
   .taskbarTime {
     height: 25px;
+    min-width: 70px;
   }
 }
 
@@ -2237,4 +2247,15 @@
   display: flex;
   flex-direction: column;
   gap: 6px;
+}
+
+/* Media Queries untuk layar desktop lebih besar */
+@media (min-width: 1024px) {
+  .icons {
+    padding-left: 8px; /* Padding kiri lebih kecil untuk layar besar */
+  }
+  
+  .icon {
+    margin-bottom: 8px; /* Jarak antar icon lebih dekat */
+  }
 } 
